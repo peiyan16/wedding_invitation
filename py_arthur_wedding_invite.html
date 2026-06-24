@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pei Yan & Arthur - Wedding Invitation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', 'Times New Roman', serif;
+    }
+    body {
+      background: #faf3f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .card {
+      max-width: 620px;
+      width: 100%;
+      background: #ffffff;
+      padding: 50px 40px;
+      border-radius: 28px;
+      box-shadow: 0 24px 70px rgba(90, 61, 54, 0.12);
+      text-align: center;
+      border: 1px solid #efe2db;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 30px 80px rgba(90, 61, 54, 0.18);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid #f0e0d8;
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .subhead {
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: #b0887a;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .names {
+      font-size: 46px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      color: #4a2f28;
+      margin: 6px 0 4px;
+      line-height: 1.2;
+    }
+    .ampersand {
+      font-size: 30px;
+      color: #c79a8b;
+      font-weight: 300;
+      display: inline-block;
+      margin: 0 4px;
+    }
+
+    .date {
+      font-size: 20px;
+      color: #7a5a50;
+      letter-spacing: 8px;
+      border-top: 1.5px solid #e8d5cc;
+      border-bottom: 1.5px solid #e8d5cc;
+      padding: 14px 0;
+      margin: 20px 0 22px;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1.5px solid #ecdcd4;
+      margin: 22px 0;
+      width: 60px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section {
+      margin: 26px 0;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #b0887a;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .section-content {
+      font-size: 19px;
+      color: #3d2c26;
+      line-height: 1.7;
+    }
+    .section-content strong {
+      font-weight: 600;
+      color: #4a2f28;
+    }
+
+    .venue-name {
+      font-size: 23px;
+      font-weight: 600;
+      color: #4a2f28;
+      margin: 4px 0 2px;
+      line-height: 1.3;
+    }
+    .venue-address {
+      font-size: 16px;
+      color: #6a554a;
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+    .venue-address a {
+      color: #8a6b5e;
+      text-decoration: none;
+      border-bottom: 1px dotted #c9b2a8;
+      transition: color 0.2s;
+    }
+    .venue-address a:hover {
+      color: #4a2f28;
+      border-bottom: 1px solid #4a2f28;
+    }
+
+    /* Music Section */
+    .music-section {
+      background: linear-gradient(135deg, #f8f0ec 0%, #f0e5df 100%);
+      border-radius: 16px;
+      padding: 22px 20px 20px;
+      margin: 20px 0 16px;
+      border: 1px solid #e8d5cc;
+      transition: all 0.3s;
+    }
+    .music-section:hover {
+      background: linear-gradient(135deg, #f5ede9 0%, #ede0d8 100%);
+    }
+    .music-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #b0887a;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .music-song {
+      font-size: 22px;
+      font-weight: 600;
+      color: #4a2f28;
+      letter-spacing: 1px;
+      margin: 2px 0;
+    }
+    .music-artist {
+      font-size: 16px;
+      color: #8a6b5e;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .music-lyrics {
+      font-size: 15px;
+      color: #5a3d36;
+      line-height: 1.8;
+      font-style: italic;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      margin: 8px 0 12px;
+      border-left: 3px solid #c79a8b;
+      border-right: 3px solid #c79a8b;
+    }
+    .music-lyrics span {
+      display: block;
+      font-size: 13px;
+      color: #9a7a6e;
+      margin-top: 6px;
+      font-style: normal;
+      letter-spacing: 2px;
+    }
+    .spotify-embed {
+      margin: 10px 0 4px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(90, 61, 54, 0.10);
+    }
+    .spotify-embed iframe {
+      width: 100%;
+      height: 80px;
+      border: none;
+      border-radius: 12px;
+      display: block;
+    }
+    .music-note {
+      font-size: 13px;
+      color: #9a7a6e;
+      letter-spacing: 1px;
+      margin-top: 6px;
+    }
+    .music-note .heart-beat {
+      color: #c79a8b;
+      animation: pulse 1.5s ease-in-out infinite;
+      display: inline-block;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Map Box */
+    .map-box {
+      background: #f5ede9;
+      border-radius: 16px;
+      padding: 20px 18px 18px;
+      margin: 20px 0 16px;
+      border: 1px solid #e8d5cc;
+      transition: background 0.2s;
+    }
+    .map-box:hover {
+      background: #f0e5df;
+    }
+    .map-box .map-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #b0887a;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .map-box .map-link {
+      font-size: 17px;
+      color: #4a2f28;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      padding: 6px 16px;
+      background: #fff;
+      border-radius: 40px;
+      border: 1px solid #dccbc2;
+      transition: all 0.25s;
+    }
+    .map-box .map-link:hover {
+      background: #4a2f28;
+      color: #fff;
+      border-color: #4a2f28;
+    }
+
+    /* QR Code Section */
+    .qr-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 16px 0 10px;
+      padding: 16px 14px 14px;
+      background: #faf5f2;
+      border-radius: 16px;
+      border: 1px dashed #dccbc2;
+    }
+    .qr-section .qr-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #b0887a;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .qr-section .qr-code {
+      width: 140px;
+      height: 140px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 4px 16px rgba(90, 61, 54, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-section .qr-code svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .qr-section .qr-sub {
+      font-size: 13px;
+      color: #9a7a6e;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    .qr-section .qr-sub span {
+      display: inline-block;
+      animation: pulse 1.8s ease-in-out infinite;
+      color: #c79a8b;
+    }
+
+    /* Parking */
+    .parking {
+      background: #f8f0ec;
+      padding: 18px 22px 14px;
+      border-radius: 14px;
+      margin: 16px 0 20px;
+      text-align: left;
+      border-left: 4px solid #c79a8b;
+    }
+    .parking-title {
+      font-weight: 600;
+      color: #4a2f28;
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .parking ul {
+      list-style: none;
+      padding: 0;
+    }
+    .parking ul li {
+      padding: 5px 0 5px 32px;
+      color: #4d3830;
+      font-size: 16px;
+      position: relative;
+      border-bottom: 1px dashed #e8d5cc;
+    }
+    .parking ul li:last-child {
+      border-bottom: none;
+    }
+    .parking ul li::before {
+      content: "🅿️";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      font-size: 16px;
+    }
+    .parking .walk-time {
+      color: #9a7a6e;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    /* RSVP */
+    .rsvp-box {
+      background: #4a2f28;
+      color: #fff;
+      padding: 22px 18px 18px;
+      border-radius: 40px;
+      margin: 24px 0 12px;
+    }
+    .rsvp-box .rsvp-label {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #dccbc2;
+      font-weight: 300;
+    }
+    .rsvp-box .rsvp-date {
+      font-size: 28px;
+      font-weight: 700;
+      color: #f5d9ce;
+      letter-spacing: 2px;
+      display: block;
+      margin: 4px 0 2px;
+    }
+    .rsvp-box .rsvp-sub {
+      font-size: 14px;
+      color: #dccbc2;
+      letter-spacing: 2px;
+      font-weight: 300;
+      margin-top: 6px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 17px;
+      color: #9a7a6e;
+      letter-spacing: 2px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .footer .heart {
+      color: #c79a8b;
+      font-size: 20px;
+      animation: pulse 1.8s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .card {
+        padding: 32px 20px;
+        border-radius: 20px;
+      }
+      .card::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border-radius: 14px;
+      }
+      .names {
+        font-size: 32px;
+        letter-spacing: 3px;
+      }
+      .ampersand {
+        font-size: 22px;
+      }
+      .date {
+        font-size: 16px;
+        letter-spacing: 5px;
+        padding: 10px 0;
+      }
+      .section-content {
+        font-size: 17px;
+      }
+      .venue-name {
+        font-size: 19px;
+      }
+      .venue-address {
+        font-size: 14px;
+      }
+      .parking ul li {
+        font-size: 14px;
+        padding: 4px 0 4px 28px;
+      }
+      .rsvp-box .rsvp-date {
+        font-size: 22px;
+      }
+      .map-box .map-link {
+        font-size: 15px;
+        padding: 5px 14px;
+      }
+      .music-song {
+        font-size: 18px;
+      }
+      .music-lyrics {
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+      .spotify-embed iframe {
+        height: 70px;
+      }
+      .qr-section .qr-code {
+        width: 110px;
+        height: 110px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .names {
+        font-size: 26px;
+      }
+      .card {
+        padding: 24px 14px;
+      }
+      .rsvp-box {
+        padding: 16px 12px;
+        border-radius: 30px;
+      }
+      .rsvp-box .rsvp-date {
+        font-size: 18px;
+      }
+      .music-song {
+        font-size: 16px;
+      }
+      .qr-section .qr-code {
+        width: 90px;
+        height: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Decorative top -->
+  <div class="subhead">— You are cordially invited —</div>
+
+  <!-- Names -->
+  <div class="names">
+    Pei Yan <span class="ampersand">&amp;</span> Arthur
+  </div>
+
+  <!-- Date -->
+  <div class="date">11 · 10 · 2026</div>
+
+  <!-- Tea Ceremony -->
+  <div class="section">
+    <div class="section-title">☕ Tea Ceremony</div>
+    <div class="section-content">11:30 AM</div>
+  </div>
+
+  <!-- Luncheon -->
+  <div class="section">
+    <div class="section-title">🍽️ Luncheon Reception</div>
+    <div class="section-content">12:00 PM</div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ====== MUSIC SECTION ====== -->
+  <div class="music-section">
+    <span class="music-title">🎵 Our Wedding Song</span>
+    <div class="music-song">"All of Me"</div>
+    <div class="music-artist">— John Legend —</div>
+
+    <div class="music-lyrics">
+      "Cause all of me<br />
+      Loves all of you<br />
+      Love your curves and all your edges<br />
+      All your perfect imperfections"
+      <span>— For you, my love ♥</span>
+    </div>
+
+    <!-- Spotify Embed -->
+    <div class="spotify-embed">
+      <iframe 
+        src="https://open.spotify.com/embed/track/3UurH2nDk6Kz0TQYvCb5u9?utm_source=generator&theme=0" 
+        allow="encrypted-media; clipboard-write; fullscreen"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <div class="music-note">
+      <span class="heart-beat">♥</span> Listen to our love song <span class="heart-beat">♥</span>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Venue -->
+  <div class="section">
+    <div class="section-title">📍 Venue</div>
+    <div class="venue-name">Auntie Gaik Lean's Old School Eatery</div>
+    <div class="venue-address">
+      1, Bishop St, Georgetown,<br />
+      10200 George Town, Penang, Malaysia
+    </div>
+  </div>
+
+  <!-- Google Map Box -->
+  <div class="map-box">
+    <span class="map-label">🗺️ Open in Google Maps</span>
+    <a href="https://www.google.com/maps?q=1+Bishop+St+Georgetown+10200+George+Town+Penang+Malaysia" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="map-link">
+       📍 View on Google Maps
+    </a>
+  </div>
+
+  <!-- ====== QR CODE SECTION ====== -->
+  <div class="qr-section">
+    <span class="qr-label">📱 Scan to open in Google Maps</span>
+    <div class="qr-code">
+      <!-- QR Code SVG generated from https://api.qrserver.com -->
+      <img 
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.google.com%2Fmaps%3Fq%3D1%2BBishop%2BSt%2BGeorgetown%2B10200%2BGeorge%2BTown%2BPenang%2BMalaysia&bgcolor=ffffff&color=4a2f28&margin=12" 
+        alt="QR Code for Google Maps - Auntie Gaik Lean Nyonya Cuisine"
+        width="140"
+        height="140"
+        style="border-radius:8px;"
+      />
+    </div>
+    <div class="qr-sub">
+      <span>📸</span> Point your camera at the QR code <span>📸</span>
+    </div>
+  </div>
+
+  <!-- Parking -->
+  <div class="parking">
+    <div class="parking-title">🅿️ Nearby Parking</div>
+    <ul>
+      <li>
+        <strong>Union Street Car Park</strong> 
+        <span class="walk-time">— 2 min walk (103 m)</span>
+      </li>
+      <li>
+        <strong>Sri Weld Food Court Car Park</strong> 
+        <span class="walk-time">— 2 min walk (108 m)</span>
+      </li>
+      <li>
+        <strong>Street Parking</strong> 
+        <span class="walk-time">— along Bishop St &amp; nearby streets</span>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- RSVP -->
+  <div class="rsvp-box">
+    <span class="rsvp-label">💌 Please RSVP by</span>
+    <span class="rsvp-date">31st July 2026</span>
+    <div class="rsvp-sub">— We can't wait to celebrate with you —</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    With all of me <span class="heart">♥</span><br />
+    Pei Yan &amp; Arthur
+  </div>
+
+  <!-- Small note -->
+  <div style="margin-top:18px; font-size:11px; color:#c9b2a8; letter-spacing:1px; border-top:1px solid #f0e0d8; padding-top:14px;">
+    ✦ Michelin One-Star Nyonya Cuisine ✦
+  </div>
+
+</div>
+
+</body>
+</html>
